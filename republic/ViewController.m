@@ -8,11 +8,14 @@
 
 #import "ViewController.h"
 
-@interface ViewController () <UITableViewDelegate, UITableViewDataSource> {
-    UILabel *label;
-    UITableView *yourReprList;
-}
+#import <IGListKit/IGListKit.h>
+#import "HomeFeedSectionController.h"
 
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource, IGListAdapterDelegate> {
+    UILabel *label;
+    IGListCollectionView *collectionView;
+}
+@property (nonatomic, strong) IGListAdapter *adapter;
 @end
 
 @implementation ViewController
@@ -22,14 +25,21 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1.0];
     label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 250, 50)];
-    [label setText:@"Knwo your representative"];
+    [label setText:@"Know your representative"];
     [self.view addSubview:label];
     
-    yourReprList = [[UITableView alloc] init];
-    yourReprList.delegate = self;
-    yourReprList.dataSource = self;
-    [yourReprList registerClass:[UITableViewCell class] forCellReuseIdentifier:@"resue"];
-    [yourReprList reloadData];
+    
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    
+    collectionView = [[IGListCollectionView alloc] initWithFrame:CGRectZero
+                                            collectionViewLayout:layout];
+    [self.view addSubview:collectionView];
+    
+    _adapter = [[IGListAdapter alloc] initWithUpdater:[[IGListAdapterUpdater alloc] init]
+                                       viewController:self
+                                     workingRangeSize:0];
+    _adapter.collectionView = collectionView;
+    _adapter.dataSource = self;
 }
 
 
@@ -40,24 +50,30 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
     CGFloat height = self.view.frame.size.height - label.frame.size.height;
-    yourReprList.frame = CGRectMake(0, 10, self.view.frame.size.width, height);
+    collectionView.frame = CGRectMake(0, 10, self.view.frame.size.width, height);
+    [self.adapter performUpdatesAnimated:YES completion:nil];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // mayor + congress man + 2- senator + governor + president
-    return 5;
-}
+#pragma mark IGListAdapterDataSource
 
-- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell;
+- (NSArray<id <IGListDiffable>> *)objectsForListAdapter:(IGListAdapter *)listAdapter {
+    return @[@"Donald Trump", @"Small hands"];
     
-    return cell;
+}
+
+- (IGListSectionController <IGListSectionType> *)listAdapter:(IGListAdapter *)listAdapter
+                                  sectionControllerForObject:(id)object {
+    return [[HomeFeedSectionController alloc] init];
+}
+
+- (nullable UIView *)emptyViewForListAdapter:(IGListAdapter *)listAdapter {
+    return nil;
 }
 
 @end
