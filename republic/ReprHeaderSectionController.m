@@ -1,21 +1,19 @@
 //
-//  HomeFeedSectionController.m
+//  ReprHeaderSectionController.m
 //  republic
 //
-//  Created by Prabhat Godse on 12/30/16.
-//  Copyright © 2016 Prabhat Godse. All rights reserved.
+//  Created by Prabhat Godse on 1/2/17.
+//  Copyright © 2017 Prabhat Godse. All rights reserved.
 //
 
-#import "HomeFeedSectionController.h"
-
+#import "ReprHeaderSectionController.h"
 #import "SenatorFeedCellCollectionViewCell.h"
-#import "ReprDataModel.h"
 
-@interface HomeFeedSectionController()
-@property (nonatomic, strong) ReprDataModel *object;
+@interface ReprHeaderSectionController()
+@property (nonatomic, strong) NSString *object;
 @end
 
-@implementation HomeFeedSectionController
+@implementation ReprHeaderSectionController
 
 - (NSInteger)numberOfItems {
     return 1;
@@ -30,8 +28,8 @@
                                                dequeueReusableCellOfClass:[SenatorFeedCellCollectionViewCell class]
                                                forSectionController:self
                                                atIndex:index];
-    
-    cell.fullName = self.object.twitter;
+    NSString *twitterId = self.object;
+    cell.fullName = twitterId;
     
     return cell;
 }
@@ -43,4 +41,5 @@
 - (void)didSelectItemAtIndex:(NSInteger)index {
     
 }
+
 @end

@@ -14,7 +14,8 @@
 		0D2A05761DF3A0F1001056EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D2A05741DF3A0F1001056EF /* LaunchScreen.storyboard */; };
 		0D9E5A821E17461600A4CC95 /* HomeFeedSectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E5A811E17461600A4CC95 /* HomeFeedSectionController.m */; };
 		0D9E5A851E1747EB00A4CC95 /* SenatorFeedCellCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E5A841E1747EB00A4CC95 /* SenatorFeedCellCollectionViewCell.m */; };
-		0D9E5A881E174AB000A4CC95 /* HomeFeedHeaderSectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E5A871E174AB000A4CC95 /* HomeFeedHeaderSectionController.m */; };
+		0D9E5A8C1E1B53F500A4CC95 /* ReprHeaderSectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E5A8B1E1B53F500A4CC95 /* ReprHeaderSectionController.m */; };
+		0D9E5A8F1E1B584700A4CC95 /* ReprDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E5A8E1E1B584700A4CC95 /* ReprDataModel.m */; };
 		86381F523BBF1A6EEB1C6350 /* Pods_republic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECE020CD7ED51C50B82CC9FE /* Pods_republic.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,8 +33,10 @@
 		0D9E5A811E17461600A4CC95 /* HomeFeedSectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeFeedSectionController.m; sourceTree = "<group>"; };
 		0D9E5A831E1747EB00A4CC95 /* SenatorFeedCellCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenatorFeedCellCollectionViewCell.h; sourceTree = "<group>"; };
 		0D9E5A841E1747EB00A4CC95 /* SenatorFeedCellCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenatorFeedCellCollectionViewCell.m; sourceTree = "<group>"; };
-		0D9E5A861E174AB000A4CC95 /* HomeFeedHeaderSectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeFeedHeaderSectionController.h; sourceTree = "<group>"; };
-		0D9E5A871E174AB000A4CC95 /* HomeFeedHeaderSectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeFeedHeaderSectionController.m; sourceTree = "<group>"; };
+		0D9E5A8A1E1B53F500A4CC95 /* ReprHeaderSectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReprHeaderSectionController.h; sourceTree = "<group>"; };
+		0D9E5A8B1E1B53F500A4CC95 /* ReprHeaderSectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReprHeaderSectionController.m; sourceTree = "<group>"; };
+		0D9E5A8D1E1B584600A4CC95 /* ReprDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReprDataModel.h; sourceTree = "<group>"; };
+		0D9E5A8E1E1B584700A4CC95 /* ReprDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReprDataModel.m; sourceTree = "<group>"; };
 		466347595E95B5B6FFCF1074 /* Pods-republic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-republic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-republic/Pods-republic.debug.xcconfig"; sourceTree = "<group>"; };
 		D566E2215CBFC6F416665AE6 /* Pods-republic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-republic.release.xcconfig"; path = "Pods/Target Support Files/Pods-republic/Pods-republic.release.xcconfig"; sourceTree = "<group>"; };
 		ECE020CD7ED51C50B82CC9FE /* Pods_republic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_republic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,16 +75,18 @@
 		0D2A05651DF3A0F1001056EF /* republic */ = {
 			isa = PBXGroup;
 			children = (
-				0D9E5A861E174AB000A4CC95 /* HomeFeedHeaderSectionController.h */,
-				0D9E5A871E174AB000A4CC95 /* HomeFeedHeaderSectionController.m */,
+				0D9E5A8D1E1B584600A4CC95 /* ReprDataModel.h */,
+				0D9E5A8E1E1B584700A4CC95 /* ReprDataModel.m */,
+				0D9E5A8A1E1B53F500A4CC95 /* ReprHeaderSectionController.h */,
+				0D9E5A8B1E1B53F500A4CC95 /* ReprHeaderSectionController.m */,
 				0D9E5A831E1747EB00A4CC95 /* SenatorFeedCellCollectionViewCell.h */,
 				0D9E5A841E1747EB00A4CC95 /* SenatorFeedCellCollectionViewCell.m */,
 				0D9E5A801E17461600A4CC95 /* HomeFeedSectionController.h */,
 				0D9E5A811E17461600A4CC95 /* HomeFeedSectionController.m */,
-				0D2A05691DF3A0F1001056EF /* AppDelegate.h */,
-				0D2A056A1DF3A0F1001056EF /* AppDelegate.m */,
 				0D2A056C1DF3A0F1001056EF /* ViewController.h */,
 				0D2A056D1DF3A0F1001056EF /* ViewController.m */,
+				0D2A05691DF3A0F1001056EF /* AppDelegate.h */,
+				0D2A056A1DF3A0F1001056EF /* AppDelegate.m */,
 				0D2A05721DF3A0F1001056EF /* Assets.xcassets */,
 				0D2A05741DF3A0F1001056EF /* LaunchScreen.storyboard */,
 				0D2A05771DF3A0F1001056EF /* Info.plist */,
@@ -237,11 +242,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D9E5A851E1747EB00A4CC95 /* SenatorFeedCellCollectionViewCell.m in Sources */,
+				0D9E5A8C1E1B53F500A4CC95 /* ReprHeaderSectionController.m in Sources */,
+				0D9E5A8F1E1B584700A4CC95 /* ReprDataModel.m in Sources */,
 				0D2A056E1DF3A0F1001056EF /* ViewController.m in Sources */,
 				0D9E5A821E17461600A4CC95 /* HomeFeedSectionController.m in Sources */,
 				0D2A056B1DF3A0F1001056EF /* AppDelegate.m in Sources */,
 				0D2A05681DF3A0F1001056EF /* main.m in Sources */,
-				0D9E5A881E174AB000A4CC95 /* HomeFeedHeaderSectionController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
