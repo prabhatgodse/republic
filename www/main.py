@@ -8,10 +8,10 @@ sqlite3_connection = sqlite3.connect('../database/republic.db')
 if __name__ == '__main__':
     # create_congress_table(sqlite3_connection)
     # create_congress_data(sqlite3_connection)
-
+    #
     # create_congress_terms_table(sqlite3_connection)
     # create_congress_terms_data(sqlite3_connection)
-
+    #
     # create_congress_social_media_table(sqlite3_connection)
     # create_congress_social_media_data(sqlite3_connection)
 

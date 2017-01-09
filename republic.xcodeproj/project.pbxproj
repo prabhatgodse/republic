@@ -16,6 +16,7 @@
 		0D9E5A851E1747EB00A4CC95 /* SenatorFeedCellCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E5A841E1747EB00A4CC95 /* SenatorFeedCellCollectionViewCell.m */; };
 		0D9E5A8C1E1B53F500A4CC95 /* ReprHeaderSectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E5A8B1E1B53F500A4CC95 /* ReprHeaderSectionController.m */; };
 		0D9E5A8F1E1B584700A4CC95 /* ReprDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E5A8E1E1B584700A4CC95 /* ReprDataModel.m */; };
+		0D9E5A931E1DE76900A4CC95 /* ReprFeedViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E5A921E1DE76900A4CC95 /* ReprFeedViewCell.m */; };
 		86381F523BBF1A6EEB1C6350 /* Pods_republic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECE020CD7ED51C50B82CC9FE /* Pods_republic.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,8 @@
 		0D9E5A8B1E1B53F500A4CC95 /* ReprHeaderSectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReprHeaderSectionController.m; sourceTree = "<group>"; };
 		0D9E5A8D1E1B584600A4CC95 /* ReprDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReprDataModel.h; sourceTree = "<group>"; };
 		0D9E5A8E1E1B584700A4CC95 /* ReprDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReprDataModel.m; sourceTree = "<group>"; };
+		0D9E5A911E1DE76900A4CC95 /* ReprFeedViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReprFeedViewCell.h; sourceTree = "<group>"; };
+		0D9E5A921E1DE76900A4CC95 /* ReprFeedViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReprFeedViewCell.m; sourceTree = "<group>"; };
 		466347595E95B5B6FFCF1074 /* Pods-republic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-republic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-republic/Pods-republic.debug.xcconfig"; sourceTree = "<group>"; };
 		D566E2215CBFC6F416665AE6 /* Pods-republic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-republic.release.xcconfig"; path = "Pods/Target Support Files/Pods-republic/Pods-republic.release.xcconfig"; sourceTree = "<group>"; };
 		ECE020CD7ED51C50B82CC9FE /* Pods_republic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_republic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +78,7 @@
 		0D2A05651DF3A0F1001056EF /* republic */ = {
 			isa = PBXGroup;
 			children = (
+				0D9E5A901E1DE72200A4CC95 /* Representative */,
 				0D9E5A8D1E1B584600A4CC95 /* ReprDataModel.h */,
 				0D9E5A8E1E1B584700A4CC95 /* ReprDataModel.m */,
 				0D9E5A8A1E1B53F500A4CC95 /* ReprHeaderSectionController.h */,
@@ -101,6 +105,15 @@
 				0D2A05671DF3A0F1001056EF /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0D9E5A901E1DE72200A4CC95 /* Representative */ = {
+			isa = PBXGroup;
+			children = (
+				0D9E5A911E1DE76900A4CC95 /* ReprFeedViewCell.h */,
+				0D9E5A921E1DE76900A4CC95 /* ReprFeedViewCell.m */,
+			);
+			name = Representative;
 			sourceTree = "<group>";
 		};
 		2DC42F1252CED060F2F9B3F5 /* Frameworks */ = {
@@ -246,6 +259,7 @@
 				0D9E5A8F1E1B584700A4CC95 /* ReprDataModel.m in Sources */,
 				0D2A056E1DF3A0F1001056EF /* ViewController.m in Sources */,
 				0D9E5A821E17461600A4CC95 /* HomeFeedSectionController.m in Sources */,
+				0D9E5A931E1DE76900A4CC95 /* ReprFeedViewCell.m in Sources */,
 				0D2A056B1DF3A0F1001056EF /* AppDelegate.m in Sources */,
 				0D2A05681DF3A0F1001056EF /* main.m in Sources */,
 			);

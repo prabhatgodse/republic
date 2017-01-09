@@ -8,7 +8,7 @@
 
 #import "HomeFeedSectionController.h"
 
-#import "SenatorFeedCellCollectionViewCell.h"
+#import "ReprFeedViewCell.h"
 #import "ReprDataModel.h"
 
 @interface HomeFeedSectionController()
@@ -26,12 +26,12 @@
 }
 
 - (UICollectionViewCell*)cellForItemAtIndex:(NSInteger)index {
-    SenatorFeedCellCollectionViewCell *cell = [self.collectionContext
-                                               dequeueReusableCellOfClass:[SenatorFeedCellCollectionViewCell class]
-                                               forSectionController:self
-                                               atIndex:index];
+    ReprFeedViewCell *cell = [self.collectionContext
+                              dequeueReusableCellOfClass:[ReprFeedViewCell class]
+                              forSectionController:self
+                              atIndex:index];
     
-    cell.fullName = self.object.twitter;
+    cell.twitterid = self.object.twitter;
     
     return cell;
 }

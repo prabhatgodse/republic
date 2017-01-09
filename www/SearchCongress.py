@@ -141,7 +141,10 @@ class CongressSearch:
             INNER JOIN (
                     SELECT *, MAX(start_date)
                     FROM congressterms
-                    WHERE congressterms.state = ? AND congressterms.type = ?
+                    WHERE
+                        congressterms.state = ?
+                        AND congressterms.type = ?
+                        AND CAST( strftime('%s', end_date) AS INTEGER) > CAST( strftime('%s', date('now')) AS INTEGER)
                     GROUP BY userid
             ) AS ct
             ON ct.userid = congress.full_name;
@@ -162,6 +165,10 @@ class CongressSearch:
             each = self.jsonify_congress_and_terms(rmod)
 
             smedia = self.search_congress_social_media(userid)
+            if len(smedia) == 0:
+                print 'ERROR: Social media not found for: ', userid
+                break
+
             smedia = list(smedia[0])
             smedia = smedia[1:]
             smedia_json = self.jsonify_items(smedia, congress_social_media_coulmn_order[1:])
@@ -169,3 +176,7 @@ class CongressSearch:
             json_res.append(each)
 
         return json_res
+
+# SELECT userid, end_date, MAX(start_date) FROM  congressterms WHERE congressterms.state='NJ' AND congressterms.type='rep' AND CAST( strftime('%s', end_date) AS INTEGER) > CAST( strftime('%s', date('now')) AS INTEGER)  GROUP BY userid;
+#
+# SELECT userid, CAST( strftime('%s', start_date) AS INTEGER), end_date, MAX(start_date) FROM  congressterms WHERE congressterms.state='NJ' AND congressterms.type='rep'  GROUP BY userid;

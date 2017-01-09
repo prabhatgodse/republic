@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.view.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1.0];
+    self.view.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1.0];
     label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 320, 50)];
     [label setText:@"Know your representative. Location Jersey City, NJ"];
     label.textColor = [UIColor blackColor];
@@ -36,14 +36,19 @@
     ReprDataModel *mayor = [[ReprDataModel alloc] init];
     mayor.twitter = @"StevenFulop";
     
-    NSNumber *num = [NSNumber numberWithInt:60];
-    self.objects = @[@"Mayor: Steven Fulop", mayor,
-             @"US Senator: Corey Booker"];
+    ReprDataModel *senD = [[ReprDataModel alloc] init];
+    senD.twitter = @"CoreyBooker";
+    
+    
+//    self.objects = @[@"Mayor: Steven Fulop", mayor,
+//             @"US Senator: Corey Booker", senD];
+    self.objects = @[];
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     
     collectionView = [[IGListCollectionView alloc] initWithFrame:CGRectZero
                                             collectionViewLayout:layout];
+    collectionView.backgroundColor = [UIColor colorWithWhite:0.76 alpha:1.0];
     [self.view addSubview:collectionView];
     
     _adapter = [[IGListAdapter alloc] initWithUpdater:[[IGListAdapterUpdater alloc] init]
@@ -52,7 +57,7 @@
     _adapter.collectionView = collectionView;
     _adapter.dataSource = self;
     
-    [self getRepresentativesByLocation:@"NJ" type:@"sen"];
+    [self getRepresentativesByLocation:@"NJ" type:@"rep"];
 }
 
 
@@ -89,11 +94,34 @@
                                if (statusCode == 200) {
                                    NSError *parseError = nil;
                                    NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
-                                   if (dictionary) {
-                                       NSLog(@"%s %@", __FUNCTION__, dictionary);
-                                   }
+                                   [self _onReloadReprData:dictionary];
                                }
                            }];
+}
+
+- (void)_onReloadReprData:(NSDictionary*)data {
+//    if([data class] != [NSArray class]) {
+//        return;
+//    }
+    NSArray *dataList = (NSArray*)data;
+    
+    NSMutableArray *feedItems = [NSMutableArray array];
+    
+    for(NSDictionary *item in dataList) {
+        NSString *type = [item[@"type"] isEqualToString:@"sen"] ? @"Senator" : @"Congressmen";
+        NSString *name = [NSString stringWithFormat:@"%@ %@", item[@"first_name"], item[@"last_name"]];
+        NSString *feedTitle = [NSString stringWithFormat:@"US %@: %@", type, name];
+        
+        [feedItems addObject:feedTitle];
+        
+        NSDictionary *social = item[@"social_media"];
+        ReprDataModel *senD = [[ReprDataModel alloc] init];
+        senD.twitter = social[@"twitter"];
+        [feedItems addObject:senD];
+    }
+    
+    self.objects = feedItems;
+    [_adapter reloadDataWithCompletion:nil];
 }
 
 #pragma mark IGListAdapterDataSource

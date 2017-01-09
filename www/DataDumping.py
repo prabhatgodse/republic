@@ -12,7 +12,23 @@ def congress_search(db, param, value):
 def key_val(key, obj, default=''):
     return obj[key] if key in obj else default
 
+def checkTableExists(dbcon, tablename):
+    dbcur = dbcon.cursor()
+    dbcur.execute("""
+        SELECT COUNT(*)
+        FROM {0}
+        """.format(tablename))
+    if dbcur.fetchone()[0] >= 1:
+        dbcur.close()
+        return True
+
+    dbcur.close()
+    return False
+
 def create_congress_table(db_conn):
+    if checkTableExists(db_conn, 'congress'):
+        return
+
     cursor = db_conn.cursor()
     createSql = """
         CREATE TABLE congress (
@@ -80,16 +96,19 @@ def create_congress_social_media_table(db_conn):
 def insert_congress(congress, db_conn):
     cursor = db_conn.cursor()
     n = congress['name']
+    bio = congress['bio']
+
     first_name = n['first']
     middle_name = key_val('middle', n)
     last_name = n['last']
-    gender = congress['bio']['gender']
+    gender = bio['gender']
+    full_name = first_name + middle_name + last_name
+    print full_name
 
     dat = congress['id']
     bioguide = key_val('bioguide', dat)
     wikipedia = key_val('wikipedia', dat)
-    birthday = congress['bio']['birthday']
-    full_name = first_name + middle_name + last_name
+    birthday = bio['birthday'] if 'birthday' in bio else ''
 
     sql = """
         INSERT INTO congress (
